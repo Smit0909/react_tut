@@ -11,12 +11,21 @@ export default function Home() {
 
 
   useEffect(() => {
-    appwriteService.getPosts().then((posts) => {
-      if (posts) {
-        setPosts(posts.documents);
-      }
-    });
-  }, []);
+    if(authStatus)
+    {
+      appwriteService.getPosts().then((posts) => {
+        if (posts) {
+          setPosts(posts.documents);
+        }
+      });
+    }
+    else{
+      setPosts([]);
+    }
+    
+  }, [authStatus]);
+
+  
 
   if (posts.length === 0) {
     return (
