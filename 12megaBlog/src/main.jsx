@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import store from "./store/store.js";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import { AuthLayout} from "./components/index.js";
-import Login from "./pages/Login.jsx"
+import { AuthLayout } from "./components/index.js";
+import Login from "./pages/Login.jsx";
 import AddPost from "./pages/AddPost";
 import Signup from "./pages/Signup";
 import EditPost from "./pages/EditPost";
@@ -69,7 +69,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/post/:slug",
-        element: <Post />,
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <Post />
+          </AuthLayout>
+        ),
       },
     ],
   },
